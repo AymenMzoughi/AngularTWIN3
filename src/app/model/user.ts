@@ -1,10 +1,10 @@
 export class User{
     id: number;
-    name: String;
-    job: String;
-    phone: String;
-    email: String;
-    address: String;
-    picture: String;
-  
+    name: string;
+    job: string;
+    phone: string;
+    email:string;
+    address:string;
+    picture:string;
+    category: string
 }
