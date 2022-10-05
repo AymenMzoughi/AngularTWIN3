@@ -16,7 +16,7 @@ export class ListProductComponent implements OnInit {
     this.list=[
       {id:12,
        title: 'T-shirt 1',
-       price: 28,
+       price: 8,
        nbrLike: 40,
        description: 'nice T-shirt',
        category: 'Women',
