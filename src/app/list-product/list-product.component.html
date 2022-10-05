@@ -1,7 +1,8 @@
 <h1>{{title}}</h1>
 <form class="col-md-3">
-  <input type="number" name="price" class="from-control" placeholder="Search by price">
+  <input type="number" [(ngModel)]="priceMax" name="price" class="from-control" placeholder="Search by price">
 </form>
+{{priceMax}}
 <br>
 <div class="row">
   <div class="col-md-3" *ngFor="let product of list">
