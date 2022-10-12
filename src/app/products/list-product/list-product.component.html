@@ -1,12 +1,15 @@
 <h1>{{title}}</h1>
-<form class="col-md-3">
-  <input type="number" [(ngModel)]="priceMax" name="price" class="from-control" placeholder="Search by price">
+<br>
+<br>
+<form class="col-md-3 align-middle">
+  <input type="number" [(ngModel)]="priceMax"
+  name="price" class="form-control" placeholder="Search by price">
 </form>
-{{priceMax}}
+<br>
 <br>
 <div class="row">
-  <div class="col-md-3" *ngFor="let product of list">
-    <div class="card" style="width: 18rem;"  *ngIf="product.price<=priceMax || priceMax==null">
+  <div class="col-md-8 col-xl-4" *ngFor="let product of list" >
+    <div class="card" style="width: 18rem;" *ngIf="product.price<=priceMax || priceMax==null"> <!---filter--->
       <img src="{{product.picture}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{product.title}}</h5>
@@ -14,7 +17,7 @@
         <p class="card-text">
           {{product.description}} <img src="assets/stock.jpg" class="stock btnBuy" *ngIf="product.quantity==0" >
           <br>
-          <strong>price </strong>{{product.price}}$
+          <strong>price </strong>{{product.price}} $
         </p>
         <button class="btn btn-sm btn-danger" (click)="incrementLike(product)" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
@@ -27,9 +30,12 @@
                 [disabled]="product.quantity==0">
           buy
         </button>
-
-
       </div>
+      
     </div>
+    <br>
+    <br>
   </div>
+
 </div>
+<br>

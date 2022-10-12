@@ -1,4 +1,4 @@
-import { User } from './../model/user';
+import { User } from '../../Core/model/user';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -44,5 +44,11 @@ export class ListUserComponent implements OnInit {
     ]
   }
 
+ 
+  suppUser(product: User): void{
+    let i= this.list.indexOf(product);
+
+      this.list.splice(i,1)
+    }
 
 }

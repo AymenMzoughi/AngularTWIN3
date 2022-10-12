@@ -1,27 +1,21 @@
+import { NotFoundComponent } from './Pages/home/not-found/not-found.component';
+import { ContactComponent } from './Pages/home/contact/contact.component';
+import { HomeComponent } from './Pages/home/home.component';
+import { ListUserComponent } from './users/list-user/list-user.component';
+import { ListProductComponent } from './products/list-product/list-product.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListProductComponent } from './list-product/list-product.component';
-import { ListUserComponent } from './list-user/list-user.component';
-import { RouterModule } from '@angular/router';
-import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
-import { NotFoundError } from 'rxjs';
-import { NotFoundComponent } from './not-found/not-found.component';
-
+import { Routes, RouterModule } from '@angular/router';
 const ROUTES: Routes=[
-  {path: '', component:HomeComponent},
-  {path: 'index',redirectTo:'home', pathMatch:'full'},
-  {path: 'product', component: ListProductComponent},
-  {path: 'user',component: ListUserComponent},
-  {path: 'home',component: HomeComponent},
-  {path: 'contact',component: ContactComponent},
-  {path: '**', component: NotFoundComponent}
+  {path:'',component:HomeComponent},
+  {path:'index',redirectTo:'home',pathMatch:'full'},
+  {path:'home',component: HomeComponent},
+  {path:'contact',component: ContactComponent},
+  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
+  { path: 'users', loadChildren: () => import('./users/users.module').then(m   => m.UsersModule) },
+  {path:'**', component: NotFoundComponent}
 ]
-
-
 @NgModule({
-
   imports: [
     CommonModule,
     RouterModule.forRoot(ROUTES),

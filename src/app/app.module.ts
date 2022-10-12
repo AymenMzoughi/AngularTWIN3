@@ -2,23 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ListProductComponent } from './list-product/list-product.component';
-import { FooterComponent } from './footer/footer.component';
-import { ListUserComponent } from './list-user/list-user.component';
+import { HeaderComponent } from './Shared/footer/header/header.component';
+import { FooterComponent } from './Shared/footer/footer.component';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './Pages/home/home.component';
+import { ContactComponent } from './Pages/home/contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './Pages/home/not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ListProductComponent,
+    HeaderComponent,  
     FooterComponent,
-    ListUserComponent,
     HomeComponent,
     ContactComponent,
     NotFoundComponent
