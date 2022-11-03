@@ -1,5 +1,9 @@
 <h1>{{title}}</h1>
 <br>
+
+<div class="alert alert-danger" *ngIf="count!=0">
+You have {{count}} product(s) out of stock ! <a routerLink="/products/outofstock">More details ?</a>
+</div>
 <br>
 <form class="col-md-3 align-middle">
   <input type="number" [(ngModel)]="priceMax"

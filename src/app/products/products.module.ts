@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { FormProductComponent } from './form-product/form-product.component';
 import { ProfileComponent } from '../users/profile/profile.component';
 import { FormUserComponent } from '../users/form-user/form-user.component';
+import { AdminProductComponent } from './admin-product/admin-product.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormUserComponent } from '../users/form-user/form-user.component';
     ListProductComponent,
     FormProductComponent,
     ProfileComponent,
-    FormUserComponent
+    FormUserComponent,
+    AdminProductComponent
   ],
   imports: [
     CommonModule,
