@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { AdminProductComponent } from "./admin-product/admin-product.component";
+import { DetailProductComponent } from "./detail-product/detail-product.component";
+import { FormProductComponent } from "./form-product/form-product.component";
+import { ListProductComponent } from "./list-product/list-product.component";
+import { ProductsRoutingModule } from "./products-routing.module";
+import { ProductsComponent } from "./products.component";
 
-import { ProductsRoutingModule } from './products-routing.module';
-import { ProductsComponent } from './products.component';
-import { ListProductComponent } from './list-product/list-product.component';
-import { FormsModule } from '@angular/forms';
-import { FormProductComponent } from './form-product/form-product.component';
-import { ProfileComponent } from '../users/profile/profile.component';
-import { FormUserComponent } from '../users/form-user/form-user.component';
-import { AdminProductComponent } from './admin-product/admin-product.component';
 
 
 @NgModule({
@@ -16,8 +15,7 @@ import { AdminProductComponent } from './admin-product/admin-product.component';
     ProductsComponent,
     ListProductComponent,
     FormProductComponent,
-    ProfileComponent,
-    FormUserComponent,
+    DetailProductComponent,
     AdminProductComponent
   ],
   imports: [

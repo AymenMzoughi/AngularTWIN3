@@ -1,15 +1,11 @@
 <h1>{{title}}</h1>
-<br>
-
 <div class="alert alert-danger" *ngIf="count!=0">
-You have {{count}} product(s) out of stock ! <a routerLink="/products/outofstock">More details ?</a>
+  {{count}} products out of stock <a routerLink="/product/outofstock">More details</a>
 </div>
-<br>
-<form class="col-md-3 align-middle">
+<form class="col-md-6">
   <input type="number" [(ngModel)]="priceMax"
-  name="price" class="form-control" placeholder="Search by price">
+  name="price" class="form-control" placeholder="search by price">
 </form>
-<br>
 <br>
 <div class="row">
   <div class="col-md-8 col-xl-4" *ngFor="let product of list" >
@@ -21,7 +17,7 @@ You have {{count}} product(s) out of stock ! <a routerLink="/products/outofstock
         <p class="card-text">
           {{product.description}} <img src="assets/stock.jpg" class="stock btnBuy" *ngIf="product.quantity==0" >
           <br>
-          <strong>price </strong>{{product.price}} $
+          <strong>price </strong>{{product.price}}$
         </p>
         <button class="btn btn-sm btn-danger" (click)="incrementLike(product)" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
@@ -34,11 +30,11 @@ You have {{count}} product(s) out of stock ! <a routerLink="/products/outofstock
                 [disabled]="product.quantity==0">
           buy
         </button>
+
+
       </div>
-      
     </div>
-    <br>
-    <br>
+    <br><br>
   </div>
 
 </div>

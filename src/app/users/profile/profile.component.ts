@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { User } from './../../core/model/user';
+import { UserService } from './../../core/services/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/Core/model/user';
-import { UserService } from 'src/app/Core/services/user.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -9,14 +9,16 @@ import { UserService } from 'src/app/Core/services/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  public id: String;
-  public user: User;
-  constructor(private route:ActivatedRoute, private userService:UserService) { }
+  public user :User;
+  constructor(private route: ActivatedRoute,
+    private userService: UserService)
+  { }
 
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['id'];
-    let list: User[]
-    list = this.userService.list.filter(user => user.id.toString()==this.id) as any 
+   let id= this.route.snapshot.params['id'];
+   let list: User[]
+    list = this.userService.list.filter(
+      user => user.id== id) as any
     this.user= list[0]
   }
 

@@ -1,29 +1,56 @@
-<h1>Add a new Product</h1>
-<form>
-    <div class="form-group col-md-6">
-        <label>Title</label>
-        <input type="text" [(ngModel)]="product.title" name="price" class="form-control">
+<h1>{{action}} Product</h1>
+<form #f="ngForm">
+  <div class="form-group col-md-6">
+    <label>Title</label>
+    <input type="text" [(ngModel)]="product.title" name="title"
+    class="form-control" required minlength="3" pattern="[a-zA-Z]{3,12}$"
+     #t="ngModel">
+    <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+        <div *ngIf="t.hasError('required')">this field is required</div>
+        <div *ngIf="t.hasError('minlength')">minlength = 3!</div>
+        <div *ngIf="t.hasError('pattern')">error pattern</div>
     </div>
-    <br>
-    <div class="form-group col-md-6">
-        <label>Price</label>
-        <input type="number" [(ngModel)]="product.price" name="price" class="form-control">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label>price</label>
+    <input type="number" #p="ngModel" [(ngModel)]="product.price"name="price" class="form-control" required>
+    <div *ngIf="p.invalid && p.touched" class="alert alert-danger">
+      this field is required
     </div>
-    <br>
-    <div class="form-group col-md-6">
-        <label>Catégorie</label>
-        <input type="text" [(ngModel)]="product.category" name="Catégorie" class="form-control">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label>quantity</label>
+    <input type="number" [(ngModel)]="product.quantity" #qt="ngModel" name="quantity" required class="form-control" required>
+    <div class="alert alert-danger" *ngIf="qt.value<0">
+      alert negatif !!!
     </div>
-    <br>
-    <div class="form-group col-md-6">
-        <label>Quantity</label>
-        <input type="number" [(ngModel)]="product.quantity" name="Quantity" class="form-control">
-    </div>
-    <br>
-    <div class="form-group col-md-6">
-        <label>Picture</label>
-        <input type="text" [(ngModel)]="product.picture" name="Picture" class="form-control">
-    </div>
-    <br>
-    <button class="btn btn-success" (click)="saveProduct()">Add</button>
+  </div>
+  <div class="form-group col-md-6">
+    <label>Picture</label>
+    <input type="text" [(ngModel)]="product.picture" name="picture" required class="form-control">
+  </div>
+  <div class="form-group col-md-6">
+    <label>nbLike</label>
+    <input type="number" [(ngModel)]="product.nbrLike" name="nbrLike" required class="form-control">
+  </div>
+  <div class="form-group col-md-6">
+    <label>Category</label>
+    <select name="category" [(ngModel)]="product.category" class="form-control">
+        <option value="men">men</option>
+        <option value="women">women</option>
+        <option value="kids">kids</option>
+    </select>
+  </div>
+  <br>
+  <button class="btn btn-success" (click)="saveProduct()"
+  [disabled]="f.invalid">
+    save
+  </button>
+  &nbsp;
+  <button type="reset" class="btn btn-warning">
+    reset
+  </button>
 </form>
+

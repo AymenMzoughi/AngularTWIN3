@@ -1,6 +1,6 @@
-import { User } from '../../Core/model/user';
+import { UserService } from './../../core/services/user.service';
+import { User } from '../../core/model/user';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/Core/services/user.service';
 
 @Component({
   selector: 'app-list-user',
@@ -9,16 +9,12 @@ import { UserService } from 'src/app/Core/services/user.service';
 })
 export class ListUserComponent implements OnInit {
   list: User[]
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+
+   }
   ngOnInit(): void {
     this.list=this.userService.list
   }
 
- 
-  suppUser(product: User): void{
-    let i= this.list.indexOf(product);
-
-      this.list.splice(i,1)
-    }
 
 }

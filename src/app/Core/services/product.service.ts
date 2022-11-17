@@ -1,17 +1,20 @@
-import { Product } from './../model/product';
-import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http"
+import { Injectable } from "@angular/core"
+import { environment } from "src/environments/environment"
+import { Product } from "../model/product"
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  public listProduct : Product[] =[
+ /* public listProduct : Product[] =[
     {id:15,
       title: 'Outfit 3',
       price: 280,
       nbrLike: 40,
       description: 'nice Outfit',
-      category: 'Men',
+      category: 'men',
       quantity: 3,
       picture:'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fbc%2F3d%2Fbc3d02841768421f1fab4e03f68be288b8851c5c.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]'},
     {id:12,
@@ -19,7 +22,7 @@ export class ProductService {
      price: 28,
      nbrLike: 40,
      description: 'nice T-shirt',
-     category: 'Women',
+     category: 'women',
      quantity: 3,
      picture:'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fff%2F55%2Fff55f8591a27acf2678a6f531add67167d41993a.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]'
     },
@@ -29,7 +32,7 @@ export class ProductService {
       price: 18,
       nbrLike: 40,
       description: 'nice T-shirt',
-      category: 'Women',
+      category: 'women',
       quantity: 0,
       picture: 'https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F94%2Fa0%2F94a0f95305117dab710e5e5a829422b43dde52e2.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]'
     },
@@ -38,10 +41,25 @@ export class ProductService {
       price: 280,
       nbrLike: 0,
       description: 'nice T-shirt',
-      category: 'Men',
+      category: 'men',
       quantity: 0,
       picture:'http://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F42%2F31%2F4231ea87da0d835e0a19486450d2d233cfdc2564.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BLOOKBOOK%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]'}
-    ];
-
-  constructor() { }
+    ];*/
+  public uri= environment.uri+'products/'
+  constructor(private http: HttpClient) { }
+  getAllProduct(){
+     return this.http.get<Product[]>(this.uri)
+  }
+  addProduct(p:Product){
+    return this.http.post(this.uri, p)
+  }
+  deleteProduct(id:number){
+    return this.http.delete(this.uri+id)
+  }
+  updateProduct(p:Product){
+    return this.http.put(this.uri+p.id,p)
+  }
+  getProductById(id:number){
+    return this.http.get<Product>(this.uri+id)
+  }
 }
